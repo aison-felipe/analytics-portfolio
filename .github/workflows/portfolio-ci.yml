@@ -10,11 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código do repositório
+      - name: Baixar código
         uses: actions/checkout@v4
 
-      - name: Mostrar mensagem
-        run: echo "Executando CI do portfólio Analytics"
+      - name: Verificar index.html
+        run: |
+          if [ ! -f index.html ]; then
+            echo "Erro: index.html não encontrado"
+            exit 1
+          fi
 
-      - name: Listar arquivos
-        run: ls -la
+      - name: Arquivo encontrado
+        run: echo "index.html validado com sucesso"
