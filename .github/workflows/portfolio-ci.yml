@@ -1,0 +1,20 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  validar-portfolio:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
+
+      - name: Mostrar mensagem
+        run: echo "Pipeline executado com sucesso"
+
+      - name: Listar arquivos
+        run: ls -la
