@@ -6,19 +6,23 @@ on:
       - master
 
 jobs:
-  validar-portfolio:
+  validar-sql:
     runs-on: ubuntu-latest
 
     steps:
       - name: Baixar código
         uses: actions/checkout@v4
 
-      - name: Verificar index.html
+      - name: Procurar arquivos SQL
         run: |
-          if [ ! -f index.html ]; then
-            echo "Erro: index.html não encontrado"
+          quantidade=$(find . -name "*.sql" | wc -l)
+
+          echo "Arquivos SQL encontrados: $quantidade"
+
+          if [ "$quantidade" -eq 0 ]; then
+            echo "Nenhum arquivo SQL encontrado"
             exit 1
           fi
 
-      - name: Arquivo encontrado
-        run: echo "index.html validado com sucesso"
+      - name: Validação concluída
+        run: echo "Pelo menos um arquivo SQL foi encontrado"
