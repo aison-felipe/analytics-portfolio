@@ -1,2 +1,2 @@
-SELECT *
+SELECT id
 FROM clientes
