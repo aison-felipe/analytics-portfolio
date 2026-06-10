@@ -24,5 +24,12 @@ jobs:
             exit 1
           fi
 
+      - name: Procurar SELECT *
+        run: |
+          if grep -R -i "select \*" --include="*.sql" .; then
+            echo "SELECT * encontrado"
+            exit 1
+          fi
+
       - name: Validação concluída
-        run: echo "Pelo menos um arquivo SQL foi encontrado"
+        run: echo "Validações SQL aprovadas"
